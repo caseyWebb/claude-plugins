@@ -1,0 +1,23 @@
+{
+  "name": "caseyWebb",
+  "owner": { "name": "Casey Webb" },
+  "metadata": { "description": "Personal Claude Code plugins", "version": "1.0.0" },
+  "plugins": [
+    {
+      "name": "pr-description-sync",
+      "description": "Reminds Claude to update PR title and description after git push",
+      "version": "1.0.0",
+      "source": { "source": "relative", "path": "plugins/pr-description-sync" },
+      "category": "workflow",
+      "tags": ["git", "pr", "github"]
+    },
+    {
+      "name": "doc-gate",
+      "description": "Blocks Claude at stop to review docs with update-when frontmatter for staleness",
+      "version": "1.0.0",
+      "source": { "source": "relative", "path": "plugins/doc-gate" },
+      "category": "workflow",
+      "tags": ["docs", "review"]
+    }
+  ]
+}
