@@ -1,16 +1,15 @@
 {
   "name": "pr-description-sync",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Reminds Claude to update PR title and description after git push",
   "hooks": {
     "PostToolUse": [
       {
         "matcher": "Bash",
-        "if": "Bash(git push:*)",
         "hooks": [
           {
             "type": "command",
-            "command": "pr_url=$(gh pr view --json url -q .url 2>/dev/null); if [ -n \"$pr_url\" ]; then echo \"{\\\"hookSpecificOutput\\\":{\\\"hookEventName\\\":\\\"PostToolUse\\\",\\\"additionalContext\\\":\\\"You just pushed. A PR exists at $pr_url — consider whether the PR title and description need updating to reflect the latest changes.\\\"}}\"; fi",
+            "command": "${CLAUDE_PLUGIN_ROOT}/.claude-plugin/hooks/pr-description-sync.sh",
             "timeout": 10
           }
         ]
