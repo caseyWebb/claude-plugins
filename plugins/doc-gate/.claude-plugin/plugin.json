@@ -1,6 +1,6 @@
 {
   "name": "doc-gate",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Blocks Claude at stop to review docs with update-when frontmatter for staleness",
   "hooks": {
     "Stop": [

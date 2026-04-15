@@ -11,6 +11,8 @@ parse_input
 
 cd "$CWD" || exit 0
 
+[ -f ".claude/hooks/.disable-doc-gate" ] && exit 0
+
 has_code_changes || exit 0
 
 # Scan project docs for update-when front-matter.
@@ -30,6 +32,7 @@ done
 
 REASON="Review these docs for any that need updating based on your work:
 
-${TABLE}"
+${TABLE}
+To silence doc-gate in this project, run: touch .claude/hooks/.disable-doc-gate"
 
 block_with_reason "$REASON"
