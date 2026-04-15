@@ -18,6 +18,14 @@
       "source": "./plugins/doc-gate",
       "category": "workflow",
       "tags": ["docs", "review"]
+    },
+    {
+      "name": "pr-template-inject",
+      "description": "Blocks gh pr create/edit when the PR body is missing sections from the repo's PR template",
+      "version": "1.0.0",
+      "source": "./plugins/pr-template-inject",
+      "category": "workflow",
+      "tags": ["git", "pr", "github", "template"]
     }
   ]
 }

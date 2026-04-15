@@ -1,0 +1,19 @@
+{
+  "name": "pr-template-inject",
+  "version": "1.0.0",
+  "description": "Blocks gh pr create/edit when the PR body is missing sections from the repo's PR template",
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "${CLAUDE_PLUGIN_ROOT}/.claude-plugin/hooks/pr-template-inject.sh",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  }
+}
