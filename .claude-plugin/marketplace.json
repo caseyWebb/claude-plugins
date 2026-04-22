@@ -26,6 +26,14 @@
       "source": "./plugins/pr-template-inject",
       "category": "workflow",
       "tags": ["git", "pr", "github", "template"]
+    },
+    {
+      "name": "elmq",
+      "description": "Automatically injects elmq CLI guidance into Claude Code sessions working in Elm projects",
+      "version": "1.0.0",
+      "source": { "source": "github", "repo": "caseyWebb/elmq" },
+      "category": "developer-tools",
+      "tags": ["elm", "elmq", "tree-sitter", "cli"]
     }
   ]
 }
