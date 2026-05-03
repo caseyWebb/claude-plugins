@@ -3,11 +3,11 @@ description: Add or update `update-when` frontmatter on docs scanned by doc-gate
 allowed-tools: Read, Edit, Write, Bash
 ---
 
-Initialize doc-gate by ensuring every doc it scans declares an `update-when` condition.
+Initialize doc-gate by ensuring every doc that could be surfaced by the gate declares an `update-when` condition.
 
-doc-gate's Stop hook scans `./*.md` and `docs/*.md`. Match that scope exactly — do not recurse into other directories.
+doc-gate's Stop hook always considers `./*.md` and any `*.md` under `docs/`, and conditionally surfaces deeper docs (e.g. `src/auth/README.md`) when adjacent code changes. Bootstrap all of them now so the gate has something to surface later. Skip any file where you can't derive a meaningful condition; report it at the end.
 
-Candidate files: !`ls ./*.md docs/*.md 2>/dev/null`
+Candidate files: !`{ ls ./*.md 2>/dev/null; find docs -type f -name '*.md' 2>/dev/null; git ls-files '*.md' 2>/dev/null; git ls-files --others --exclude-standard '*.md' 2>/dev/null; } | sed 's|^\./||' | sort -u`
 
 For each candidate:
 
