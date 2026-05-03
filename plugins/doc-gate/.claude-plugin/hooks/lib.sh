@@ -23,14 +23,18 @@ parse_input() {
   PROMPT="${PROMPT:-}"
 }
 
+# Print non-.md, non-openspec changed files (modified, staged, untracked), one per line.
+# Empty output = no relevant changes.
+changed_code_files() {
+  { git diff --name-only 2>/dev/null
+    git diff --cached --name-only 2>/dev/null
+    git ls-files --others --exclude-standard 2>/dev/null
+  } | grep -v '\.md$' | grep -v '^openspec/' | sort -u
+}
+
 # Returns 0 if non-.md files have been modified, staged, or are untracked.
 has_code_changes() {
-  local changes
-  changes=$(
-    { git diff --name-only 2>/dev/null; git diff --cached --name-only 2>/dev/null; git ls-files --others --exclude-standard 2>/dev/null; } \
-    | grep -v '\.md$' | grep -v '^openspec/' | head -1
-  )
-  [ -n "$changes" ]
+  [ -n "$(changed_code_files)" ]
 }
 
 # Returns 0 if .md files have been modified, staged, or are untracked.
