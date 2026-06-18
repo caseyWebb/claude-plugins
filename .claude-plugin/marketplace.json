@@ -6,7 +6,7 @@
     {
       "name": "pr-description-sync",
       "description": "Reminds Claude to update PR title and description after git push",
-      "version": "1.0.0",
+      "version": "1.0.2",
       "source": "./plugins/pr-description-sync",
       "category": "workflow",
       "tags": ["git", "pr", "github"]
