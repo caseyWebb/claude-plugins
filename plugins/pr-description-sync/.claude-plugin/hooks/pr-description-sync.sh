@@ -29,7 +29,9 @@ fi
 PR_URL=$(gh pr view --json url -q .url 2>/dev/null)
 [ -z "$PR_URL" ] && exit 0
 
-CONTEXT="You just pushed. A PR exists at ${PR_URL} — consider whether the PR title and description need updating to reflect the latest changes."
+CONTEXT="You just pushed. A PR exists at ${PR_URL} — consider whether the PR title and description need updating.
+
+A PR description describes what this branch changes relative to its base. It is not a changelog of the branch's own history. Update it to reflect the totality of the current diff — the end state reviewers will see — not the sequence of changes that got there. If an earlier push added a feature and a later push reworked how it behaves, the description should describe only how it behaves now; the intermediate version is irrelevant. Do not append, narrate, or track per-push deltas; rewrite the description so it stands on its own as an accurate summary of the final diff against the base branch."
 
 if command -v jq &>/dev/null; then
   jq -n --arg ctx "$CONTEXT" \

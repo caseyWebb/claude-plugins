@@ -1,6 +1,6 @@
 {
   "name": "pr-description-sync",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Reminds Claude to update PR title and description after git push",
   "hooks": {
     "PostToolUse": [
